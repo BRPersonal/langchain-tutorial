@@ -9,6 +9,9 @@ $ pip install langchain-groq
 $ pip show langchain-groq  
 $ pip install langchain  
 $ pip freeze > requirements.txt  
+$ pip install -r requirements.txt  
+
+
 
 Open project in pycharm editor and open a .py file. click on
 "configure interpreter" and choose local interpreter and choose 

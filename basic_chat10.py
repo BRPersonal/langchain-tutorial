@@ -43,7 +43,7 @@ details_chain = details_template | llm | StrOutputParser()
 apology_chain = apology_template | llm | StrOutputParser()
 
 def route(info):
-    if "postive" in info['sentiment'].lower():
+    if "positive" in info['sentiment'].lower():
         return thankyou_chain
     elif "negative" in info['sentiment'].lower():
         return apology_chain
@@ -53,7 +53,7 @@ def route(info):
 # Neutral
 user_feedback = "The delivery was late, and the product was damaged when it arrived. However, the customer support team was very helpful in resolving the issue quickly."
 
-# Postive
+# Positive
 # user_feedback = "The customer service was fantastic. The representative was friendly, knowledgeable, and resolved my issue quickly."
 
 # Negative
