@@ -11,7 +11,7 @@ $ pip install langchain
 $ pip freeze > requirements.txt    
 $ pip install langchain-openai 
 $ pip install numpy  
-
+$ pip install langgraph  
 
 
 You dont need to run above install commands one-by-one
