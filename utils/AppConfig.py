@@ -30,9 +30,13 @@ class AppConfig:
         load_dotenv(override=True)
 
         self.groq_api_key = os.getenv("GROQ_API_KEY")
+        self.open_api_key = os.getenv("OPENAI_API_KEY")
 
-    def get_groq_api_key(self):
-        return self.groq_api_key
+        if self.groq_api_key is None:
+            raise ValueError("Missing GROQ_API_KEY in .env")
+
+        if self.open_api_key is None:
+            raise ValueError("Missing OPENAI_API_KEY in .env")
 
 
 # Example usage
@@ -42,4 +46,3 @@ if __name__ == "__main__":
 
     # Both config1 and config2 should refer to the same singleton instance
     print(config1 is config2)  # Should print: True
-    print(config1.get_groq_api_key())

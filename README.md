@@ -8,7 +8,16 @@ $ pip install python-dotenv
 $ pip install langchain-groq  
 $ pip show langchain-groq  
 $ pip install langchain  
-$ pip freeze > requirements.txt  
+$ pip freeze > requirements.txt    
+$ pip install langchain-openai 
+$ pip install numpy  
+
+
+
+You dont need to run above install commands one-by-one
+All package dependencies are captured in requirements.txt using
+pip freeze command. Just run this one command and that will do
+
 $ pip install -r requirements.txt  
 
 
