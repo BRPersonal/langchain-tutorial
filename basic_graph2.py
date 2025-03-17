@@ -35,6 +35,25 @@ def multiply(a: int, b: int) -> int:
 
     return a * b
 
+@tool
+def calculate_discount(price: float, discount_percentage: float) -> float:
+    """
+    Calculates the final price after applying a discount.
+
+    Args:
+        price (float): The original price of the item.
+        discount_percentage (float): The discount percentage (e.g., 20 for 20%).
+
+    Returns:
+        float: The final price after the discount is applied.
+    """
+    if not (0 <= discount_percentage <= 100):
+        raise ValueError("Discount percentage must be between 0 and 100")
+
+    discount_amount = price * (discount_percentage / 100)
+    final_price = price - discount_amount
+    return final_price
+
 
 #create a node that reads the entire conversation
 #pass it to llm to generate a response , considering all past messges
@@ -49,7 +68,8 @@ builder.add_edge(START, "tool_calling_llm")
 builder.add_edge("tool_calling_llm", END)
 
 # A ToolNode automatically handles executing any tool calls made by the LLM
-builder.add_node("tools", ToolNode([multiply]))
+# Note that node name has to be "tools" . Otherwise, we get exception
+builder.add_node("tools", ToolNode([multiply,calculate_discount]))
 
 # Add a conditional edge that uses 'tools_condition'
 # If the LLM’s response indicates a tool call, it routes to the ToolNode
@@ -74,3 +94,10 @@ userInputs = [HumanMessage(content="Multiply 2 and 3")]
 messages = graph.invoke({"messages": userInputs})
 for m in messages['messages']:
   print(m.content)
+
+print("-------conversation #3")
+userInputs = [HumanMessage(content="What is the price of an item that costs $100 after a 20% discount?")]
+messages = graph.invoke({"messages": userInputs})
+for m in messages['messages']:
+  print(m.content)
+
