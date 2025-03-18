@@ -71,7 +71,7 @@ builder.add_edge("tool_calling_llm", END)
 # Note that node name has to be "tools" . Otherwise, we get exception
 builder.add_node("tools", ToolNode([multiply,calculate_discount]))
 
-# Add a conditional edge that uses 'tools_condition'
+# Add a conditional edge that uses 'tools_condition', which is pre-built node defined in langgraph
 # If the LLM’s response indicates a tool call, it routes to the ToolNode
 # Otherwise, it routes to END
 # I believe there will be only one ToolNode in a graph that will hold all the tools
