@@ -101,3 +101,9 @@ messages = graph.invoke({"messages": userInputs})
 for m in messages['messages']:
   print(m.content)
 
+
+print("-------conversation #4")
+userInputs = [HumanMessage(content="I have an item whose price is calculated as product of 50 and 2.What will be the price of the item after applying 20% discount?")]
+messages = graph.invoke({"messages": userInputs})
+for m in messages['messages']:
+  print(m.content)
