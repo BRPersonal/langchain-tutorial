@@ -45,7 +45,7 @@ logging.info("adding documents to vector store...")
 vector_store.add_documents(documents=documents, ids=uuids)
 
 query = "What's the weather going to be like tomorrow?"
-results = vector_store.similarity_search(query, k=1)  # e.g., top 3 matches
+results = vector_store.similarity_search(query, k=1)  # e.g., top 1 match
 
 logging.info(f"results={results[0].page_content}")
 
